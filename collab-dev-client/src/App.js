@@ -1,40 +1,72 @@
+import {useState} from "react";
 import './App.css';
 import ButtonTop from "./components/ButtonTop";
 import HomePage from "./pages/HomePage";
+import RegistrationPage from "./pages/RegistrationPage";
+import MenuIcon from "./icons/menu";
 import {Routes, Route, Link} from 'react-router-dom';
 
 function App() {
+    const [activeBar, setActiveBar] = useState(false)
     return (
         <div className='App'>
-            <header>
-                <div style={{width: '20vw'}}>
-                    <div className='logo'>CollabDev</div>
+            <header className={activeBar && 'active-header'}>
+                <div className='header-container'>
+                    <div className='container-style'>
+                        <Link to='/'>
+                            <div className='logo'>CollabDev</div>
+                        </Link>
+                    </div>
+                    <div className='button-container-style'>
+                        <Link to='/'>
+                            <ButtonTop name='HomeIcon' text='Предложения'/>
+                        </Link>
+                        <Link to='/profile'>
+                            <ButtonTop name='ProfileIcon' text='Профиль'/>
+                        </Link>
+                        <Link to='/my-teams'>
+                            <ButtonTop name='TeamsIcon' text='Мои команды'/>
+                        </Link>
+                        <Link to='/messages'>
+                            <ButtonTop name='ChatsIcon' text='Сообщения'/>
+                        </Link>
+                    </div>
+                    <div className='container-style'
+                         style={{justifyContent: 'right', display: 'flex', paddingRight: 20, cursor: 'pointer'}}>
+                        <div className='menu' onClick={() => setActiveBar(a => !a)}>
+                            <MenuIcon/>
+                        </div>
+                    </div>
                 </div>
-                <div className='button-container-style'>
-                    <Link to='/home'>
-                        <ButtonTop name='HomeIcon' text='Предложения'/>
-                    </Link>
-                    <Link to='/profile'>
-                        <ButtonTop name='ProfileIcon' text='Профиль'/>
-                    </Link>
-                    <Link to='/my-teams'>
-                        <ButtonTop name='TeamsIcon' text='Мои команды'/>
-                    </Link>
-                    <Link to='/messages'>
-                        <ButtonTop name='ChatsIcon' text='Сообщения'/>
-                    </Link>
-                </div>
-                <div className='container-style'>
-                </div>
+                    <div className={activeBar ? 'top-active-button' : 'top-mobile-button'}>
+                        <div style={{width: '100vw', justifyContent: 'center', display: 'flex'}}>
+                            <div style={{width: 200}}>
+                                <Link to='/'>
+                                    <ButtonTop name='HomeIcon' text='Предложения'/>
+                                </Link>
+                                <Link to='/profile'>
+                                    <ButtonTop name='ProfileIcon' text='Профиль'/>
+                                </Link>
+                                <Link to='/my-teams'>
+                                    <ButtonTop name='TeamsIcon' text='Мои команды'/>
+                                </Link>
+                                <Link to='/messages'>
+                                    <ButtonTop name='ChatsIcon' text='Сообщения'/>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
             </header>
 
-            <Routes>
-                <Route path="/" exact element={<HomePage/>}/>
-                <Route path="/home" element={<HomePage/>}/>
-                <Route path="/profile" element={<HomePage/>}/>
-                <Route path="/my-teams" element={<HomePage/>}/>
-                <Route path="/messages" element={<HomePage/>}/>
-            </Routes>
+
+            <main>
+                <Routes>
+                    <Route path="/" exact element={<HomePage/>}/>
+                    <Route path="/profile" element={<RegistrationPage/>}/>
+                    <Route path="/my-teams" element={<HomePage/>}/>
+                    <Route path="/messages" element={<div/>}/>
+                </Routes>
+            </main>
         </div>
     );
 }
