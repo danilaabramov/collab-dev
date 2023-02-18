@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.App {
+    background-color: #EFF2F9;
+    min-height: 1000px;
+}
+
+li {
+    display: flex;
+}
+ul {
+    padding: 0;
+}
+
+header {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    background-color: #fff;
+    height: 70px;
+    width: 100vw;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px solid #E5E3E8;
+    border-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.button-top:hover {
+    cursor: pointer;
+    background-color: #F4F7FE;
+    border-radius: 10px;
+    color: #175BDD;
+}
+
+.button-top {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    pointer-events: none;
+    margin-left: 20px;
+}
+
+.button-container-style {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    gap: 1%
+}
+
+.container-style {
+    width: 20vw
+}
+
+.team-vacancy-card {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+    border: 1px solid #E5E3E8;
+}
+
+.team-vacancy-card-image {
+    flex: 0 0 200px;
+}
+
+.team-vacancy-card-image img {
+    width: 100%;
+    height: auto;
+}
+
+.team-vacancy-card-content {
+    padding: 20px;
+}
+
+.team-vacancy-card-stack-list {
+    font-size: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.team-vacancy-card-stack-item {
+    background-color: #F3F7FE;
+    padding: 8px;
+    color: #175BDD;
+    border: 1px solid #175BDD;
+    border-radius: 20px;
+}
+
+.team-vacancy-card-chat-link {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #00bcd4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.team-vacancy-card-chat-link:hover {
+    background-color: #0097a7;
+}
+
