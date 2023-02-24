@@ -13,7 +13,7 @@ function App() {
             <header className={activeBar && 'active-header'}>
                 <div className='header-container'>
                     <div className='container-style'>
-                        <Link to='/'>
+                        <Link to='/' onClick={() => setActiveBar(a => !a)}>
                             <div className='logo'>CollabDev</div>
                         </Link>
                     </div>
@@ -38,23 +38,24 @@ function App() {
                         </div>
                     </div>
                 </div>
-                    <div className={activeBar ? 'top-active-button' : 'top-mobile-button'}>
-                        <div style={{width: '100vw', justifyContent: 'center', display: 'flex'}}>
+                    <div className={activeBar ? 'top-active-mobile-buttons' : 'top-mobile-buttons'}
+                         style={{}}>
+
                             <div style={{width: 200}}>
-                                <Link to='/'>
+                                <Link to='/' onClick={() => setActiveBar(a => !a)}>
                                     <ButtonTop name='HomeIcon' text='Предложения'/>
                                 </Link>
-                                <Link to='/profile'>
+                                <Link to='/profile' onClick={() => setActiveBar(a => !a)}>
                                     <ButtonTop name='ProfileIcon' text='Профиль'/>
                                 </Link>
-                                <Link to='/my-teams'>
+                                <Link to='/my-teams' onClick={() => setActiveBar(a => !a)}>
                                     <ButtonTop name='TeamsIcon' text='Мои команды'/>
                                 </Link>
-                                <Link to='/messages'>
+                                <Link to='/messages' onClick={() => setActiveBar(a => !a)}>
                                     <ButtonTop name='ChatsIcon' text='Сообщения'/>
                                 </Link>
                             </div>
-                        </div>
+
                     </div>
             </header>
 
