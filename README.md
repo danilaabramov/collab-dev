@@ -4,7 +4,9 @@ Clone the repo and install dependencies:
 
 ```bash
 git clone --depth 1 --branch main https://github.com/abramov/collab-dev your-project-name
+
 cd your-project-name
+
 npm install
 ```
 
@@ -15,5 +17,5 @@ npm install
 Start the app in the `dev` environment:
 
 ```bash
-npm start
+npm run start
 ```
