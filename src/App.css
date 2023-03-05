@@ -283,3 +283,13 @@ button {
 button.pressed {
     transform: scale(0.95);
 }
+
+.project-page {
+    justify-content: center;
+    width: 100vw;
+    display: flex
+}
+
+.project-page-container {
+    width: 800px
+}

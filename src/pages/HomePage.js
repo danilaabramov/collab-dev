@@ -1,6 +1,20 @@
+import {useDispatch, useSelector} from "react-redux";
 import TeamVacancyCard from "../components/TeamVacancyCard";
+import {
+    fetchAllProjects,
+    isProjectsLoaded,
+} from "../redux/slices/projects";
+import {useEffect} from "react";
 
 function HomePage() {
+    const dispatch = useDispatch();
+    const IsProjectsLoaded = useSelector(isProjectsLoaded);
+    const {projects} = useSelector((state) => state.projects);
+
+    useEffect(() => {
+        dispatch(fetchAllProjects());
+    }, [dispatch]);
+
     const vacancies = [
         {
             image: 'https://example.com/images/developer.png',
@@ -12,7 +26,6 @@ function HomePage() {
                 'Опыт работы с базами данных, такими как PostgreSQL, MySQL'
             ],
             stack: ['Java', 'Spring Framework', 'PostgreSQL', 'MySQL'],
-            chat: 'https://example.com/chat/java-developer'
         },
         {
             image: 'https://example.com/images/frontend.png',
@@ -24,23 +37,21 @@ function HomePage() {
                 'Опыт работы с RESTful API'
             ],
             stack: ['React', 'Redux', 'JavaScript', 'HTML', 'CSS', 'RESTful API'],
-            chat: 'https://example.com/chat/frontend-developer'
         }
     ];
 
 
     return (
-        <div style={{justifyContent: 'center', width: '100vw', display: 'flex'}}>
-            <div className="team-page" style={{width: 800}}>
-                {vacancies.map((vacancy, index) => (
+        <div className="project-page">
+            <div className="project-page-container">
+                {IsProjectsLoaded && projects.items.map((project, index) => (
                     <TeamVacancyCard
                         key={index}
-                        image={vacancy.image}
-                        title={vacancy.title}
-                        description={vacancy.description}
-                        requirements={vacancy.requirements}
-                        stack={vacancy.stack}
-                        chat={vacancy.chat}
+                        // image={project.image}
+                        title={project.title}
+                        description={project.description}
+                        // requirements={project.requirements}
+                        stack={project.skills}
                     />
                 ))}
             </div>
