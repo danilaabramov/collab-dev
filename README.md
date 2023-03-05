@@ -1,6 +1,6 @@
 ## Download
 
-https://nodejs.org/en/
+https://nodejs.org/
 
 ## Install
 
