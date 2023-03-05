@@ -3,7 +3,7 @@
 Clone the repo and install dependencies:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/abramov/collab-dev your-project-name
+git clone --depth 1 --branch main https://github.com/danilaabramov/collab-dev your-project-name
 
 cd your-project-name
 
