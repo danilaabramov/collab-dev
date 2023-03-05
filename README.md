@@ -2,6 +2,8 @@
 
 https://nodejs.org/
 
+restart the PC
+
 ## Install
 
 Clone the repo and install dependencies:
