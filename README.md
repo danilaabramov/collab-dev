@@ -2,7 +2,7 @@
 
 https://nodejs.org/
 
-restart the PC
+`restart the PC`
 
 ## Install
 
