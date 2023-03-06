@@ -58,8 +58,6 @@ function App() {
 
                     </div>
             </header>
-
-
             <main>
                 <Routes>
                     <Route path="/" exact element={<HomePage/>}/>

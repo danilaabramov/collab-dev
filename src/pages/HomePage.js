@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import TeamVacancyCard from "../components/TeamVacancyCard";
 import {
-    fetchAllProjects,
+    fetchAllProjects, fetchAllSkills, fetchAllTypes,
     isProjectsLoaded,
 } from "../redux/slices/projects";
 import {useEffect} from "react";
@@ -9,11 +9,13 @@ import {useEffect} from "react";
 function HomePage() {
     const dispatch = useDispatch();
     const IsProjectsLoaded = useSelector(isProjectsLoaded);
-    const {projects} = useSelector((state) => state.projects);
+    const {projects, types, skills} = useSelector((state) => state.projects);
 
     useEffect(() => {
         dispatch(fetchAllProjects());
-    }, [dispatch]);
+        dispatch(fetchAllTypes());
+        dispatch(fetchAllSkills());
+    }, []);
 
     const vacancies = [
         {
@@ -40,7 +42,6 @@ function HomePage() {
         }
     ];
 
-
     return (
         <div className="project-page">
             <div className="project-page-container">
@@ -50,8 +51,8 @@ function HomePage() {
                         // image={project.image}
                         title={project.title}
                         description={project.description}
-                        // requirements={project.requirements}
-                        stack={project.skills}
+                        stack={project.skills.map((item) => skills.items[item])}
+                        type={types.items[project.project_type]}
                     />
                 ))}
             </div>

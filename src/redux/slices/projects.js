@@ -1,38 +1,84 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "../../axios";
 
 export const fetchAllProjects = createAsyncThunk(
-  "projects/fetchComments",
-  async () => {
-    const { data } = await axios.get("/projects");
-    return data;
-  }
+    "projects",
+    async () => {
+        const {data} = await axios.get("/projects");
+        return data;
+    }
+);
+
+export const fetchAllTypes = createAsyncThunk(
+    "type",
+    async () => {
+        const {data} = await axios.get("/type");
+        return data;
+    }
+);
+
+export const fetchAllSkills = createAsyncThunk(
+    "skill",
+    async () => {
+        const {data} = await axios.get("/skill");
+        return data;
+    }
 );
 
 const initialState = {
-  projects: {
-    items: [],
-    status: "loading",
-  }
+    projects: {
+        items: [],
+        status: "loading",
+    },
+    types: {
+        items: [],
+        status: "loading",
+    },
+    skills: {
+        items: [],
+        status: "loading",
+    }
 };
 
 const projectsSlice = createSlice({
-  name: "projects",
-  initialState,
-  reducers: {},
-  extraReducers: {
-    [fetchAllProjects.pending]: (state) => {
-      state.projects.status = "loading";
+    name: "projects",
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [fetchAllProjects.pending]: (state) => {
+            state.projects.status = "loading";
+        },
+        [fetchAllProjects.fulfilled]: (state, action) => {
+            state.projects.items = action.payload.Projects;
+            state.projects.status = "loaded";
+        },
+        [fetchAllProjects.rejected]: (state) => {
+            state.projects.status = "error";
+        },
+        [fetchAllTypes.pending]: (state) => {
+            state.types.status = "loading";
+        },
+        [fetchAllTypes.fulfilled]: (state, action) => {
+            state.types.items = action.payload.ProjectTypes.reduce((acc, item) => ({ ...acc, [item.id]: item.title }), {})
+            state.types.status = "loaded";
+        },
+        [fetchAllTypes.rejected]: (state) => {
+            state.types.status = "error";
+        },
+        [fetchAllSkills.pending]: (state) => {
+            state.skills.status = "loading";
+        },
+        [fetchAllSkills.fulfilled]: (state, action) => {
+            state.skills.items = action.payload.ProjectSkills.reduce((acc, item) => ({ ...acc, [item.id]: item.title }), {})
+            state.skills.status = "loaded";
+        },
+        [fetchAllSkills.rejected]: (state) => {
+            state.skills.status = "error";
+        }
     },
-    [fetchAllProjects.fulfilled]: (state, action) => {
-      state.projects.items = action.payload.Projects;
-      state.projects.status = "loaded";
-    },
-    [fetchAllProjects.rejected]: (state) => {
-      state.projects.status = "error";
-    }
-  },
 });
 
 export const projectReducer = projectsSlice.reducer;
-export const isProjectsLoaded = (state) => state.projects.projects.status === "loaded";
+export const isProjectsLoaded = (state) => state.projects.projects.status === "loaded"
+    && state.projects.types.status === "loaded"
+    && state.projects.skills.status === "loaded";

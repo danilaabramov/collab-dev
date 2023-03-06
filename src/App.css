@@ -293,3 +293,7 @@ button.pressed {
 .project-page-container {
     width: 800px
 }
+
+.team-vacancy-card-type {
+    color: #888;
+}
