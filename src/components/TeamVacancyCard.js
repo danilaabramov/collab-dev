@@ -14,9 +14,6 @@ function TeamVacancyCard(props) {
                         <li className="team-vacancy-card-stack-item" key={index}>{item}</li>
                     ))}
                 </ul>
-                {/*<a className="team-vacancy-card-chat-link">*/}
-                {/*    {props.type}*/}
-                {/*</a>*/}
                 <div className="team-vacancy-card-type">
                     #{props.type}
                 </div>

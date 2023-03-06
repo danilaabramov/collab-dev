@@ -180,22 +180,6 @@ header {
     border-radius: 20px;
 }
 
-.team-vacancy-card-chat-link {
-    display: inline-block;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    background-color: #00bcd4;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.team-vacancy-card-chat-link:hover {
-    background-color: #0097a7;
-}
-
 .registration-form-container {
     align-items: center;
     display: flex;
@@ -249,7 +233,7 @@ header {
     border: 0;
 }
 
-.registration-form__input:focus{
+.registration-form__input:focus {
     outline: none !important;
 }
 
@@ -284,13 +268,13 @@ button.pressed {
     transform: scale(0.95);
 }
 
-.project-page {
+.job-openings {
     justify-content: center;
     width: 100vw;
     display: flex
 }
 
-.project-page-container {
+.job-openings-container {
     width: 800px
 }
 
