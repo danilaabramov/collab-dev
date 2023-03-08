@@ -25,19 +25,31 @@ export const fetchAllSkills = createAsyncThunk(
     }
 );
 
+export const fetchPostProject = createAsyncThunk(
+    "auth/fetchRegister",
+    async (params) => {
+        const { data } = await axios.post("/projects/", params);
+        return data;
+    }
+);
+
 const initialState = {
     projects: {
         items: [],
         status: "loading",
     },
     types: {
-        items: [],
+        items: {},
         status: "loading",
     },
     skills: {
-        items: [],
+        items: {},
         status: "loading",
-    }
+    },
+    newProject: {
+        status: "loading",
+    },
+    status: "loading",
 };
 
 const projectsSlice = createSlice({
@@ -49,7 +61,7 @@ const projectsSlice = createSlice({
             state.projects.status = "loading";
         },
         [fetchAllProjects.fulfilled]: (state, action) => {
-            state.projects.items = action.payload.Projects;
+            state.projects.items = [...action.payload.Projects].reverse();
             state.projects.status = "loaded";
         },
         [fetchAllProjects.rejected]: (state) => {
@@ -74,6 +86,16 @@ const projectsSlice = createSlice({
         },
         [fetchAllSkills.rejected]: (state) => {
             state.skills.status = "error";
+        },
+        [fetchPostProject.pending]: (state) => {
+            state.newProject.status = "loading";
+        },
+        [fetchPostProject.fulfilled]: (state, action) => {
+            state.projects.items = [action.payload.Project, ...state.projects.items]
+            state.newProject.status = "loaded";
+        },
+        [fetchPostProject.rejected]: (state) => {
+            state.newProject.status = "error";
         }
     },
 });

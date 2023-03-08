@@ -5,6 +5,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #EFF2F9;
 }
 
 a {
@@ -13,7 +14,6 @@ a {
 }
 
 .App {
-    background-color: #EFF2F9;
     min-height: 100vh;
 }
 
@@ -79,6 +79,10 @@ header {
     width: 20vw;
 }
 
+.button-right-header{
+    display: flex;
+}
+
 .menu {
     display: none;
 }
@@ -109,6 +113,10 @@ header {
 @media (max-width: 910px) {
     header {
         transition: height 1s;
+    }
+
+    .button-right-header{
+        display: none;
     }
 
     .menu {
@@ -177,7 +185,8 @@ header {
     padding: 8px;
     color: #175BDD;
     border: 1px solid #175BDD;
-    border-radius: 20px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .registration-form-container {
@@ -204,7 +213,7 @@ header {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    width: 100%;
+    width: calc(100% - 4px);
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 1px;
@@ -280,4 +289,16 @@ button.pressed {
 
 .team-vacancy-card-type {
     color: #888;
+    cursor: pointer;
+}
+
+.add-project-stack-item {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.add-project-stack-item:hover {
+    background-color: #F3F7FE;
 }

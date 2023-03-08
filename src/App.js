@@ -5,17 +5,23 @@ import HomePage from "./pages/HomePage";
 import RegistrationPage from "./pages/RegistrationPage";
 import MenuIcon from "./icons/menu";
 import {Routes, Route, Link} from 'react-router-dom';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchAllProjects, fetchAllSkills, fetchAllTypes} from "./redux/slices/projects"
+import AddProjectPage from "./pages/AddProjectPage";
 
 function App() {
+    const {newProject} = useSelector((state) => state.projects);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchAllProjects());
         dispatch(fetchAllTypes());
         dispatch(fetchAllSkills());
     }, []);
+
+    useEffect(() => {
+        dispatch(fetchAllProjects());
+    }, [newProject.items]);
+
 
     const [activeBar, setActiveBar] = useState(false)
     return (<div className='App'>
@@ -42,6 +48,9 @@ function App() {
                 </div>
                 <div className='container-style'
                      style={{justifyContent: 'right', display: 'flex', paddingRight: 20, cursor: 'pointer'}}>
+                    <Link className='button-right-header' to='/add-project'>
+                        <ButtonTop name='AddProject' text=''/>
+                    </Link>
                     <div className='menu' onClick={() => setActiveBar(a => !a)}>
                         <MenuIcon/>
                     </div>
@@ -63,21 +72,24 @@ function App() {
                     <Link to='/messages' onClick={() => setActiveBar(a => !a)}>
                         <ButtonTop name='ChatsIcon' text='Сообщения'/>
                     </Link>
+                    <Link to='/add-project' onClick={() => setActiveBar(a => !a)}>
+                        <ButtonTop name='AddProject' text='Создать проект'/>
+                    </Link>
                 </div>
-
             </div>
         </header>
+
         <main>
             <Routes>
                 <Route path="/" exact element={<HomePage/>}/>
                 <Route path="/profile" element={<RegistrationPage/>}/>
                 <Route path="/my-teams" element={<HomePage/>}/>
                 <Route path="/messages" element={<div/>}/>
+                <Route path="/add-project" element={<AddProjectPage/>}/>
             </Routes>
         </main>
     </div>);
 }
-
 
 export default App;
 

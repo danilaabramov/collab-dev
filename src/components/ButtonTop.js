@@ -3,12 +3,14 @@ import HomeIcon from "../icons/home";
 import ProfileIcon from "../icons/profile";
 import ChatsIcon from "../icons/chats";
 import TeamsIcon from "../icons/teams";
+import AddProject from "../icons/add-project";
 
 const iconMap = {
     'HomeIcon': HomeIcon,
     'ProfileIcon': ProfileIcon,
     'ChatsIcon': ChatsIcon,
     'TeamsIcon': TeamsIcon,
+    'AddProject': AddProject,
 };
 
 function Home({ name, text }) {
