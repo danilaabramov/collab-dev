@@ -13,7 +13,7 @@ git clone --depth 1 --branch main https://github.com/danilaabramov/collab-dev yo
 
 cd your-project-name
 
-npm install
+$ npm install
 ```
 
 ## Starting Development
@@ -21,5 +21,5 @@ npm install
 Start the app in the `dev` environment:
 
 ```bash
-npm run start
+$ npm run start
 ```
